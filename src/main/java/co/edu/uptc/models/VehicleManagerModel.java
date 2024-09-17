@@ -3,6 +3,7 @@ package co.edu.uptc.models;
 
 import co.edu.uptc.dynamic.SimpleList;
 import co.edu.uptc.interfaces.VehicleManagerInterface;
+import co.edu.uptc.model.MySort;
 import co.edu.uptc.pogos.Vehicle;
 import co.edu.uptc.utilities.JsonReader;
 import lombok.Getter;
@@ -29,7 +30,7 @@ public class VehicleManagerModel implements VehicleManagerInterface.Model {
         vehicles= jr.read();
     }
     public void sort(){
-        
+        MySort.sort(null, null);
     }
     
 

@@ -13,28 +13,27 @@ import co.edu.uptc.pogos.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-
 @Getter
 @AllArgsConstructor
 public class JsonReader {
     private String source;
-    
-    public SimpleList read(){
-        
-        
+
+    public SimpleList read() {
+
         return intanceVehicles(intanceArray());
 
     }
+
     public SimpleList intanceVehicles(Root root) {
         int c;
         SimpleList<Vehicle> vl = new SimpleList<>();
         SimpleList<String> att = new SimpleList<>();
         for (List<Object> element : root.data) {
             c = 0;
-            //att.clear();
-            //TODO agregar el metodo a la libreria
-            //TODO ir anotando las cantidades
-            att= new SimpleList<>();
+            // att.clear();
+            // TODO agregar el metodo a la libreria
+            // TODO ir anotando las cantidades
+            att = new SimpleList<>();
             for (Object elm : element) {
                 if (c > 7 && c < 25) {
                     att.add((String) elm);
