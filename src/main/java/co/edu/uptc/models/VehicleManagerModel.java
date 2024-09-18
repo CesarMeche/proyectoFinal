@@ -4,6 +4,7 @@ package co.edu.uptc.models;
 import co.edu.uptc.dynamic.SimpleList;
 import co.edu.uptc.interfaces.VehicleManagerInterface;
 import co.edu.uptc.model.MySort;
+import co.edu.uptc.pogos.Table;
 import co.edu.uptc.pogos.Vehicle;
 import co.edu.uptc.utilities.JsonReader;
 import lombok.Getter;
@@ -16,6 +17,7 @@ public class VehicleManagerModel implements VehicleManagerInterface.Model {
     public VehicleManagerModel() {
         vehicles= new SimpleList<>();
         loadData();
+        sort();
     }
 
     @Override
@@ -29,8 +31,30 @@ public class VehicleManagerModel implements VehicleManagerInterface.Model {
        
         vehicles= jr.read();
     }
-    public void sort(){
-        MySort.sort(null, null);
+    public SimpleList sort(){
+        SimpleList<String> states = new SimpleList<String>();
+        SimpleList<Table> tables = new SimpleList<Table>();
+        Table aux;
+        for (Vehicle vehicle : vehicles) {
+            if(!states.contains(vehicle.getState())){
+                aux = new Table(vehicle.getState(), 1);
+                states.add(vehicle.getState());
+                tables.add(aux);
+            }else{
+                int auxi=0;
+                while (vehicle.getState()!=states.get(auxi)) {
+                   auxi++;
+                }
+                add(tables.get(auxi));
+            }
+System.out.println("xd");
+        }
+        return tables;
+
+    }
+    private Table add(Table t){
+        t.setCan(t.getCan()+1);
+        return t;
     }
     
 
