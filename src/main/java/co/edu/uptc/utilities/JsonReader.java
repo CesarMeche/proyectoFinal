@@ -28,8 +28,10 @@ public class JsonReader {
         int c;
         SimpleList<Vehicle> vl = new SimpleList<>();
         SimpleList<String> att = new SimpleList<>();
+        int a=0;
         for (List<Object> element : root.data) {
             c = 0;
+            //a++;
             // att.clear();
             // TODO agregar el metodo a la libreria
             // TODO ir anotando las cantidades
@@ -41,7 +43,9 @@ public class JsonReader {
                 c++;
             }
             vl.add(new Vehicle(att));
-
+            // if (a==10) {
+            //     break;
+            // }
         }
         return vl;
     }
